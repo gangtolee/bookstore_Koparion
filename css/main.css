@@ -1,30 +1,42 @@
 @charset "utf-8";
 
-/* 공통 클래스 (사이트 전체에서 사용) */
+/* ==========================================
+   0. 공통 클래스 (사이트 전체에서 사용)
+========================================== */
 .container {
-    max-width: 1200px; margin : 0 auto; padding: 0 15px;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 15px;
 }
 
+/* ==========================================
+   1. HEADER (헤더 영역)
+========================================== */
 
-/* 1. Header */
-.header-top-area { background-color: gainsboro; height: 50px; 
-border-bottom: 1px solid #e5e5e5; font-size: 13px;}
+/* --- 1-1. 헤더 탑 영역 (Header Top) --- */
+.header-top-area { 
+    background-color: gainsboro; 
+    height: 50px; 
+    border-bottom: 1px solid #e5e5e5; 
+    font-size: 13px;
+}
 .top-container {
-    display: flex; justify-content: space-between;
-    align-items: center; height: 40px;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    height: 40px;
 }
 
+/* 좌측 통화 메뉴 (USD) */
 .currency-menu > li {
     position: relative;
     padding: 10px 0; 
 }
-
 .currency-menu > li > a.current-currency {
     color: #333333;
     font-size: 13px;
     text-decoration: none;
 }
-
 .currency-dropdown {
     position: absolute;
     top: 100%;
@@ -33,19 +45,16 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     background-color: #ffffff;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     z-index: 999;
-    
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
     transform: translateY(10px);
 }
-
 .currency-menu > li:hover .currency-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
-
 .currency-dropdown li a {
     display: block;
     padding: 10px 15px;
@@ -53,13 +62,14 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     font-size: 13px;
     text-decoration: none;
 }
-
 .currency-dropdown li a:hover {
     color: #f07c29;
 }
 
+/* 우측 상단 메뉴 (My Account 등) */
 .right-menu ul {
-    display:flex; gap : 20px;
+    display: flex; 
+    gap: 20px;
 }
 .right-menu ul li::after {
     content: "|"; 
@@ -69,29 +79,20 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
 .right-menu ul li:last-child::after {
     content: "";
 }
-.nav-list > li {
-    position: relative;
-}
 
+/* --- 1-2. 헤더 미드 영역 (검색창, 로고, 장바구니) --- */
 .header-mid-area {
     background-color: #ffffff;
     padding: 35px 0;
 }
-
 .mid-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.search-box, .cart-box {
-    width: 30%;
-}
-.logo {
-    width: 40%;
-    text-align: center; 
-}
-
+/* 검색창 */
+.search-box { width: 30%; }
 .search-box form {
     display: flex;
     align-items: center;
@@ -101,7 +102,6 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     overflow: hidden;
     max-width: 250px;
 }
-
 .search-box input[type="text"] {
     flex-grow: 1;
     border: none;
@@ -110,7 +110,6 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     font-size: 13px;
     outline: none; 
 }
-
 .search-box button {
     background-color: #f07c29; 
     color: white;
@@ -120,6 +119,11 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     font-size: 14px;
 }
 
+/* 로고 */
+.logo { 
+    width: 40%; 
+    text-align: center; 
+}
 .logo h1 {
     color: #f07c29;
     font-size: 42px;
@@ -128,6 +132,8 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     margin: 0;
 }
 
+/* 장바구니 */
+.cart-box { width: 30%; }
 .cart-box a {
     display: flex;        
     align-items: center;
@@ -135,7 +141,6 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     text-decoration: none;
     color: #333;
 }
-
 .cart-box .cart-wrap {
     position: relative;
     margin-right: 12px; 
@@ -147,7 +152,6 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     color: #444444; 
     margin-right: 2px;
 }
-
 .cart-box .cart-quantity {
     position: absolute;
     bottom: -5px;
@@ -163,25 +167,36 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     align-items: center;
     font-weight: bold;
 }
-
 .cart-box .cart-text {
     font-size: 14px;
     font-weight: 800; 
     letter-spacing: 0.5px;
 }
-.main-menu-area { background-color: #222222; }
+
+/* --- 1-3. 헤더 바텀 영역 (메인 메뉴) --- */
+.main-menu-area { 
+    background-color: #222222; 
+}
 .nav-list {
-    display:flex; justify-content: flex-start;
+    display: flex; 
+    justify-content: flex-start;
+}
+.nav-list > li {
+    position: relative;
 }
 .nav-list li a {
-    display: block; color: #ffffff; padding: 15px 25px;
-    font-weight: bold; text-transform: uppercase; 
+    display: block; 
+    color: #ffffff; 
+    padding: 15px 25px;
+    font-weight: bold; 
+    text-transform: uppercase; 
     transition: all 0.3s;
 }
 .nav-list li a:hover {
     color: #f07c29;
 }
 
+/* 서브 메뉴 (1단 드롭다운) */
 .sub-menu {
     position: absolute;
     top: 100%; 
@@ -194,7 +209,10 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     visibility: hidden;
     transition: all 0.3s ease-in-out;
 }
-
+.nav-list > li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+}
 .sub-menu li a {
     color: #666666 !important;
     padding: 10px 20px !important;
@@ -202,17 +220,12 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     border-bottom: 1px solid #f1f1f1;
     text-transform: none;
 }
-
 .sub-menu li a:hover {
     color: #f07c29 !important;
     background-color: #f9f9f9;
 }
 
-.nav-list > li:hover .sub-menu {
-    opacity: 1;
-    visibility: visible;
-}
-
+/* 메가 메뉴 (Shop 전용 넓은 드롭다운) */
 .mega-menu {
     position: absolute;
     top: 100%;
@@ -222,27 +235,22 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     z-index: 999;
     padding: 30px;
-    
     display: flex;
     justify-content: space-between;
-    
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
     transform: translateY(10px);
 }
-
 .nav-list > li:hover .mega-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
-
 .mega-column {
     flex: 1; 
     padding: 0 10px;
 }
-
 .mega-column h4 {
     font-size: 14px;
     font-weight: bold;
@@ -251,7 +259,6 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     padding-bottom: 10px;
     border-bottom: 1px solid #eeeeee;
 }
-
 .mega-column ul li a {
     display: block;
     color: #666666 !important;
@@ -260,16 +267,272 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     font-weight: normal;
     text-transform: none;
 }
-
 .mega-column ul li a:hover {
     color: #f07c29 !important; 
 }
-/* 2. Main */
-.service-area { background-color: midnightblue; height: 100px; }
-.slider-area { background-color: #baffc9; height: 400px; }
-.banner-area { background-color: #bae1ff; height: 150px; }
-.product-area { background-color: #dcbaff; height: 300px; }
-.banner-area-2 { background-color: #ffbaff; height: 150px; }
+
+
+/* ==========================================
+   2. MAIN (메인 본문 영역)
+========================================== */
+
+/* --- 2-1. 서비스 혜택 영역 --- */
+.service-area {
+    background-color: #ffffff;
+    padding: 30px 0; 
+    border-bottom: 1px solid #e5e5e5; 
+}
+.service-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+.single-service {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+.service-text p {
+    font-size: 13px;
+    color: #666666;
+    margin: 0;
+}
+
+/* 2-2. 슬라이더 영역 */
+.slider-area { height: 500px; }
+.mainSwiper { 
+    width: 100%; 
+    height: 100%; 
+}
+.mainSwiper .swiper-slide {
+    display: flex;
+    align-items: center; 
+    background-size: cover;
+    background-position: center;
+}
+.mainSwiper .swiper-slide .container {
+    width: 100%;
+}
+.slider-text {
+    width: 45%; 
+}
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+
+.slider-text h2 {
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: normal;
+    margin-bottom: 10px;
+    font-family: Georgia, "Times New Roman", serif;
+}
+.slider-text h1 {
+    font-size: 65px; 
+    color: #333333;
+    margin-bottom: 15px;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.1;
+}
+.slider-text p {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+}
+.slider-text .shop-btn {
+    display: inline-block;
+    background-color: #f07c29;
+    color: #ffffff;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+.slider-text .shop-btn:hover {
+    background-color: #333333; 
+}
+.mainSwiper .swiper-button-next,
+.mainSwiper .swiper-button-prev {
+    color: rgba(255, 255, 255, 0.7);
+}
+.mainSwiper .swiper-button-next:hover,
+.mainSwiper .swiper-button-prev:hover {
+    color: #ffffff;
+}
+
+/* 2-3. 상품 영역 */
+.product-area {
+    padding: 80px 0 50px 0; 
+    background-color: #ffffff;
+}
+.section-title {
+    margin-bottom: 50px;
+}
+.section-title h2 {
+    font-size: 24px;
+    color: #333333;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-family: Georgia, "Times New Roman", serif;
+}
+.section-title p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 24px;
+}
+.tab-menu {
+    margin-bottom: 40px;
+}
+.tab-menu .nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.tab-menu .nav li a {
+    font-size: 16px;
+    color: #333333;
+    font-weight: bold;
+    padding-bottom: 5px;
+    position: relative;
+}
+.tab-menu .nav li a:hover,
+.tab-menu .nav li a.active {
+    color: #f07c29;
+}
+.tab-menu .nav li a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #f07c29;
+}
+.productSwiper {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+/* 책 개별 카드 디자인 */
+.product-wrapper {
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 0.3s;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+.product-wrapper:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 마우스 올리면 그림자 스르륵! */
+}
+.product-img img {
+    width: 100%;
+    height: 350px; /* 책 표지 높이 고정 */
+    object-fit: cover;
+}
+.product-details {
+    padding: 20px 15px;
+}
+.product-details h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 제목이 너무 길면 ... 으로 표시 */
+}
+.product-details h4 a {
+    color: #333333;
+    text-decoration: none;
+}
+.product-details h4 a:hover {
+    color: #f07c29;
+}
+.product-price ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+.product-price li span.money {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f07c29; /* 가격은 주황색 */
+}
+.product-price li.old-price span.money {
+    font-size: 14px;
+    color: #999999;
+    text-decoration: line-through; /* 원래 가격엔 취소선 쫙! */
+    font-weight: normal;
+}
+
+/* 상품 슬라이더 화살표 커스텀 (원본처럼 동그랗게!) */
+.productSwiper .swiper-button-next,
+.productSwiper .swiper-button-prev {
+    color: #666;
+    background-color: #f6f6f6;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.productSwiper .swiper-button-next:after,
+.productSwiper .swiper-button-prev:after {
+    font-size: 14px;
+    font-weight: bold;
+}
+.productSwiper .swiper-button-next:hover,
+.productSwiper .swiper-button-prev:hover {
+    background-color: #f07c29;
+    color: #ffffff;
+}
+
+.banner-area-2 {
+    padding-bottom: 50px; 
+    background-color: #ffffff;
+}
+
+.banner-area-2 .banner-wrapper {
+    position: relative; 
+    overflow: hidden;   
+    border-radius: 5px;
+}
+
+.banner-area-2 .banner-wrapper img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease; 
+}
+
+.banner-area-2 .banner-wrapper:hover img {
+    transform: scale(1.05); 
+}
+
+.banner-area-2 .banner-text {
+    position: absolute; 
+    top: 50%;           
+    left: 5%;           
+    transform: translateY(-50%); 
+}
+
+.banner-area-2 .banner-text h3 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: normal;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.banner-area-2 .banner-text h2 {
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* --- 2-x. 본문 뼈대 임시 구역 --- */
+
 .bestseller-area { background-color: #ffc4c4; height: 350px; }
 .new-book-area { background-color: #e2f0cb; height: 300px; }
 
@@ -280,43 +543,73 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
 .most-product-area { background-color: #f3e5ab; height: 400px; }
 .recent-post-area { background-color: #c5a3ff; height: 300px; }
 
-/* 3. Footer */
+
+/* ==========================================
+   3. FOOTER (풋터 영역)
+========================================== */
+
+/* 풋터 공통 */
 #section-footer {
     background-color: #222222;
     color: #ffffff;
 }
+#section-footer a { 
+    color: #ffffff; 
+    text-decoration: none; 
+    transition: 0.3s; 
+}
+#section-footer a:hover { 
+    color: #f07c29; 
+}
 
-#section-footer a { color: #ffffff; text-decoration: none; 
-    transition: 0.3s; }
-#section-footer a:hover { color: #f07c29; }
-
+/* --- 3-1. 풋터 탑 --- */
 .footer-top {
-    padding: 20px 0; border-bottom: 1px solid #333;
+    padding: 20px 0; 
+    border-bottom: 1px solid #333;
 }
-
 .footer-menu {
-    display: flex; gap: 30px;
+    display: flex; 
+    gap: 30px;
 }
-
-.footer-menu li { position: relative; }
-
+.footer-menu li { 
+    position: relative; 
+}
 .footer-menu li:not(:last-child)::after {
-    content: "|"; position: absolute;
-    right: -15px; color: #555;
+    content: "|"; 
+    position: absolute;
+    right: -15px; 
+    color: #555;
 }
 
-.footer-mid { padding: 60px 0; }
-
+/* --- 3-2. 풋터 미드 --- */
+.footer-mid { 
+    padding: 60px 0; 
+}
 .footer-mid-container {
-    display: flex; justify-content: space-between;
+    display: flex; 
+    justify-content: space-between;
 }
-.footer-column { width: 22%; }
+.footer-column { 
+    width: 22%; 
+}
 .footer-column h3 {
-    font-size: 18px; margin-bottom: 25px; text-transform: uppercase;
+    font-size: 18px; 
+    margin-bottom: 25px; 
+    text-transform: uppercase;
 }
-.footer-column ul li { margin-bottom: 10px; font-size: 14px; color: #ccc; }
-.footer-column p { font-size: 14px; color: #ccc; line-height: 1.6; margin-bottom: 10px; }
+.footer-column ul li { 
+    margin-bottom: 10px; 
+    font-size: 14px; 
+    color: #ccc; 
+}
+.footer-column p { 
+    font-size: 14px; 
+    color: #ccc; 
+    line-height: 1.6; 
+    margin-bottom: 10px; 
+}
 
+/* --- 3-3. 풋터 바텀 --- */
 .footer-bottom {
     padding: 25px 0;
     background-color: #1a1a1a; 
@@ -326,5 +619,13 @@ border-bottom: 1px solid #e5e5e5; font-size: 13px;}
     justify-content: space-between;
     align-items: center;
 }
-.footer-bottom p { font-size: 13px; color: #888; }
-.payment-icons { font-size: 24px; display: flex; gap: 15px; color: #888; }
+.footer-bottom p { 
+    font-size: 13px; 
+    color: #888; 
+}
+.payment-icons { 
+    font-size: 24px; 
+    display: flex; 
+    gap: 15px; 
+    color: #888; 
+}

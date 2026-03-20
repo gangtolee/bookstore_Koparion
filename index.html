@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koparion</title>
+    <link rel="shortcut icon" href="./img/favicon_32x32.webp" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -52,7 +54,9 @@
                 </div>
 
                 <div class="logo">
-                    <h1>Koparion</h1>
+                    <a href="#">
+                        <img src="./img/logo_300x.png" alt="Koparion Logo">
+                    </a>
                 </div>
 
                 <div class="cart-box">
@@ -174,18 +178,112 @@
     <main>
 
         <section class="service-area">
+            <div class="container service-container">
+                
+                <div class="single-service">
+                    <img src="./img/1_bdef52e3-d147-4787-9696-7fccdcaf5cbe.png" alt="Free Shipping" class="service-icon">
+                    <div class="service-text">
+                        <h4>Free shipping item</h4>
+                        <p>For all orders over $500</p>
+                    </div>
+                </div>
+                
+                <div class="single-service">
+                    <img src="./img/2.png" alt="Money Back" class="service-icon">
+                    <div class="service-text">
+                        <h4>Money back guarantee</h4>
+                        <p>100% money back guarantee</p>
+                    </div>
+                </div>
+                
+                <div class="single-service">
+                    <img src="./img/3.png" alt="Cash on Delivery" class="service-icon">
+                    <div class="service-text">
+                        <h4>Cash on delivery</h4>
+                        <p>Lorem ipsum dolor consecte</p>
+                    </div>
+                </div>
+                
+                <div class="single-service">
+                    <img src="./img/4.png" alt="Help & Support" class="service-icon">
+                    <div class="service-text">
+                        <h4>Help & Support</h4>
+                        <p>Call us : 123.456.789</p>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <section class="slider-area" id="main-slider">
-        </section>
+            <div class="swiper mainSwiper">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide" style="background-image: url('./img/1.webp');">
+                        <div class="container">
+                            <div class="slider-text text-center">
+                                <h2>Huge Sale</h2>
+                                <h1>Koparion</h1>
+                                <p>Now starting at £99.00</p>
+                                <a href="#" class="shop-btn">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
 
-        <section class="banner-area">
+                    <div class="swiper-slide" style="background-image: url('./img/2.webp');">
+                        <div class="container">
+                            <div class="slider-text text-left">
+                                <h2>We can help get your</h2>
+                                <h1 style="color: #ffffff;">Books in Order</h1>
+                                <p>and Accessories</p>
+                                <a href="#" class="shop-btn">Contact Us Today!</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </section>
 
         <section class="product-area">
+            <div class="container">
+                
+                <div class="section-title text-center">
+                    <h2>Top interesting</h2>
+                    <p>Browse the collection of our best selling and top interesting products.<br>You'll definitely find what you are looking for..</p>
+                </div>
+
+                <div class="tab-menu text-center">
+                    <ul class="nav">
+                        <li><a href="#" class="active">NEW ARRIVAL</a></li>
+                        <li><a href="#">ONSALE</a></li>
+                        <li><a href="#">FEATURED PRODUCTS</a></li>
+                    </ul>
+                </div>
+
+                <div class="swiper productSwiper">
+                    <div class="swiper-wrapper" id="book-list">
+                        </div>
+                </div>
+
+            </div>
         </section>
 
         <section class="banner-area-2">
+            <div class="container">
+                <div class="banner-wrapper">
+                    <a href="#">
+                        <img src="./img/5.webp" alt="Sale up to 30% off">
+                    </a>
+                    <div class="banner-text">
+                        <h3>G. Meyer Books & Spiritual Traveler Press</h3>
+                        <h2>Sale up to 30% off</h2>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="bestseller-area">
@@ -271,7 +369,7 @@
     </footer>
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
 
