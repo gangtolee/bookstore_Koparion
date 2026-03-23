@@ -531,18 +531,717 @@
     text-transform: uppercase;
 }
 
-/* --- 2-x. 본문 뼈대 임시 구역 --- */
+/* 2-5. 베스트셀러 영역 (Author Best Selling) */
 
-.bestseller-area { background-color: #ffc4c4; height: 350px; }
-.new-book-area { background-color: #e2f0cb; height: 300px; }
+.bestseller-area {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+.bestseller-container {
+    display: flex;
+    gap: 30px; 
+}
 
-/* 더블 배너 */
-.banner-static-area { background-color: #dddddd; height: 250px; display: flex; gap: 20px; padding: 20px; }
-.banner-static-area .banner-shadow-hover { background-color: #a4ebf3; flex: 1; }
+.bestseller-left {
+    width: 65%; 
+    display: flex;
+    justify-content: space-between;
+}
+.bestseller-content {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+.bestseller-content .section-title {
+    text-align: left;
+    margin-bottom: 30px;
+}
+.bestseller-content .section-title h2 {
+    font-size: 14px;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.bestseller-content .details {
+    text-align: right;
+}
 
-.most-product-area { background-color: #f3e5ab; height: 400px; }
-.recent-post-area { background-color: #c5a3ff; height: 300px; }
+.bestseller-content .section-title h1 {
+    font-size: 24px;
+    color: #333333;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.bestseller-content .details h2 {
+    font-size: 48px;
+    color: #f07c29;
+    font-family: "Playfair Display", Georgia, serif; 
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+.bestseller-content .details .categories {
+    font-size: 12px;
+    color: #333333;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+.bestseller-content .details .categories a {
+    color: #333333;
+    transition: 0.3s;
+}
+.bestseller-content .details .categories a:hover {
+    color: #f07c29;
+}
+.bestseller-content .details p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 26px;
+    margin-bottom: 30px;
+}
+.social-author ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.social-author ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #777777;
+    color: #ffffff;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.social-author ul li a:hover {
+    background-color: #f07c29;
+}
 
+.bestseller-left .banner-img {
+    width: 50%;
+    overflow: hidden; 
+}
+.bestseller-left .banner-img img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease; 
+}
+.bestseller-left .banner-img:hover img {
+    transform: scale(1.05); 
+}
+
+.bestseller-right {
+    width: 35%; 
+    position: relative; 
+}
+.bestsellerSwiper {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 60px; 
+}
+
+.bestsellerSwiper .swiper-button-next,
+.bestsellerSwiper .swiper-button-prev {
+    top: auto;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #f6f6f6;
+    border-radius: 50%;
+    color: #666;
+    transition: 0.3s;
+}
+.bestsellerSwiper .swiper-button-next:after,
+.bestsellerSwiper .swiper-button-prev:after {
+    font-size: 12px;
+    font-weight: bold;
+}
+.bestsellerSwiper .swiper-button-next { right: 40%; }
+.bestsellerSwiper .swiper-button-prev { left: 40%; }
+
+.bestsellerSwiper .swiper-button-next:hover,
+.bestsellerSwiper .swiper-button-prev:hover {
+    background-color: #f07c29;
+    color: #ffffff;
+}
+
+.bestseller-right .product-img img {
+    height: 220px; 
+}
+
+/* 2-6. Featured Books 영역 */
+
+.new-book-area {
+    padding-bottom: 80px; 
+    background-color: #ffffff;
+}
+
+.new-book-area .section-title {
+    margin-bottom: 50px;
+    border-top: 1px solid #e5e5e5; 
+    padding-top: 50px; 
+}
+
+.new-book-area .section-title h2 {
+    font-size: 24px;
+    color: #333333;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* 🌟 하단 커스텀 화살표 영역 (중앙 정렬) */
+.featured-nav {
+    display: flex;
+    justify-content: center; 
+    gap: 15px; 
+    margin-top: 20px; 
+}
+
+/* 🌟 동그랗고 예쁜 커스텀 버튼 디자인 */
+.featured-nav .custom-next,
+.featured-nav .custom-prev {
+    width: 40px;
+    height: 40px;
+    background-color: #f6f6f6; 
+    color: #666666;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 은은한 그림자 추가 */
+}
+
+/* 아이콘 크기 조절 */
+.featured-nav .custom-next i,
+.featured-nav .custom-prev i {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 마우스 올렸을 때 주황색으로! */
+.featured-nav .custom-next:hover,
+.featured-nav .custom-prev:hover {
+    background-color: #f07c29;
+    color: #ffffff;
+}
+
+/* 2-7. Double Static Banner 영역 */
+
+.banner-static-area {
+    padding: 80px 0 50px 0;
+    background-color: #f6f6f6;
+    background-image: url('../img/7.webp'); 
+    background-repeat: repeat; 
+}
+
+.banner-static-area .row {
+    display: flex;
+    gap: 30px; 
+}
+.banner-static-area .col-lg-6 {
+    flex: 1; 
+}
+
+.banner-static-area .banner-shadow-hover {
+    overflow: hidden;
+    display: block;
+}
+
+.banner-static-area .banner-shadow-hover img {
+    width: 100%;
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+.banner-static-area .banner-shadow-hover:hover img {
+    opacity: 0.8;
+}
+
+/* 2-8. 3단 카테고리 & 뉴스레터 영역 */
+
+.most-product-area {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.most-product-wrapper {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.most-product-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* 각 열의 제목 */
+
+.section-title-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.section-title-2 h3 {
+    font-size: 16px;
+    color: #333333;
+    font-family: Georgia, "Times New Roman", serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.small-nav-wrapper {
+    display: flex;
+    gap: 5px; 
+}
+.small-nav-wrapper .small-prev,
+.small-nav-wrapper .small-next {
+    width: 25px;
+    height: 25px;
+    background-color: #f6f6f6; 
+    color: #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 2px; 
+}
+.small-nav-wrapper .small-prev i,
+.small-nav-wrapper .small-next i {
+    font-size: 12px;
+}
+
+.small-nav-wrapper .small-prev:hover,
+.small-nav-wrapper .small-next:hover {
+    background-color: #f07c29;
+    color: #ffffff;
+}
+
+.product-small-list {
+    display: flex;
+    flex-direction: column;
+}
+.single-small-product {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+.single-small-product:first-child {
+    padding-top: 0; 
+}
+
+.small-product-img {
+    width: 35%; 
+    margin-right: 15px;
+}
+.small-product-img img {
+    width: 100%;
+    height: 100px; 
+    object-fit: cover;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.small-product-content {
+    width: 65%;
+}
+.small-product-content h4 {
+    font-size: 13px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.small-product-content h4 a {
+    color: #666666;
+}
+.small-product-content h4 a:hover {
+    color: #f07c29;
+}
+.small-product-content .new-price {
+    font-size: 15px;
+    color: #f07c29;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    font-style: italic; 
+}
+
+.newsletter-box {
+    background-color: #f07c29; 
+    padding: 40px 20px;
+    position: relative;
+    margin-top: 32px; 
+    z-index: 1; 
+}
+
+.newsletter-box::before {
+    content: "";
+    position: absolute;
+    top: -32px; 
+    left: 50%;
+    margin-left: -5px; 
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f07c29;
+}
+
+.newsletter-box::after {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    margin-left: -22px; 
+    width: 44px;
+    height: 44px;
+    border: 2px solid #f07c29;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.newsletter-box h3 {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-family: Georgia, "Times New Roman", serif; 
+    font-weight: normal;
+}
+.newsletter-box p {
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+.newsletter-box form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: #d1d1d1;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 13px;
+    outline: none;
+    box-sizing: border-box;
+}
+.newsletter-box form input::placeholder {
+    color: #ffffff;
+}
+.newsletter-box form button {
+    padding: 12px 25px;
+    background-color: #ffffff;
+    color: #333333;
+    border: none;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+.newsletter-box form button:hover {
+    color: #f07c29;
+}
+
+/* 2-9. Testimonial (고객 후기) 영역 */
+.testimonial-area {
+    background-color: #222222; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px 0;
+    position: relative; 
+}
+
+.testimonial-area::before {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.testimonial-area .container {
+    position: relative;
+    z-index: 2; 
+}
+
+.testimonial-img {
+    margin-bottom: 25px;
+}
+.testimonial-img i {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ffffff; 
+    border-radius: 50%; 
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.testimonial-text p {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic; 
+}
+.testimonial-text h4 {
+    font-size: 12px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.testimonial-text h4 span {
+    color: #999999;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+
+.testimonialSwiper {
+    padding-bottom: 40px; 
+}
+.testimonialSwiper .swiper-pagination-bullet {
+    background-color: #ffffff;
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px !important;
+}
+.testimonialSwiper .swiper-pagination-bullet-active {
+    background-color: #f07c29; 
+    opacity: 1;
+}
+
+/* 2-10. Recent Post (최근 블로그) 영역 */
+
+.recent-post-area {
+    padding-bottom: 80px;
+    background-color: #ffffff;
+}
+
+.recent-post-area .section-title {
+    margin-bottom: 50px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 50px;
+}
+.recent-post-area .section-title h2 {
+    font-size: 24px;
+    color: #333333;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.blog-grid-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; 
+}
+
+.single-post {
+    flex: 1; 
+    min-width: 0; 
+}
+
+.single-post-inner {
+    background-color: #ffffff;
+}
+
+.post-img-wrapper {
+    position: relative; 
+    margin-bottom: 30px; 
+    overflow: hidden; 
+    display: block;
+}
+
+.post-img-wrapper img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.5s ease; 
+}
+
+.post-img-wrapper:hover img {
+    transform: scale(1.1); 
+}
+
+.blog-date-time {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #ffffff;
+    padding: 10px 15px; 
+    text-align: center;
+    z-index: 2; 
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.blog-date-time .day-time {
+    display: block;
+    font-size: 24px;
+    color: #333333;
+    line-height: 1.1;
+}
+
+.blog-date-time .moth-time {
+    display: block;
+    font-size: 11px;
+    color: #666666;
+    text-transform: uppercase;
+}
+
+.post-content h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 0 15px; 
+}
+.post-content h3 a {
+    color: #333333;
+}
+.post-content h3 a:hover {
+    color: #f07c29; 
+}
+
+.post-content .meta-author {
+    font-size: 12px;
+    color: #999999;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.post-content p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.8;
+    margin-bottom: 25px; 
+    padding: 0 10px 25px 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* 반응형 */
+@media (max-width: 991px) {
+    .blog-grid-wrapper {
+        flex-direction: column; 
+        gap: 50px; 
+    }
+}
+
+/* [Main] 2-11. Social Group (SNS 링크) 영역 */
+
+.social-group-area {
+    background-color: #f8f8f8; /* 아주 연한 회색 바탕 */
+    padding: 60px 0;
+}
+
+/* 🌟 반반 나누는 가로 정렬 레이아웃 */
+.social-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+.social-col {
+    flex: 1; /* 왼쪽 오른쪽 각각 50%씩 차지 */
+}
+
+/* 공통 위젯 제목 (LATEST TWEETS, STAY CONNECTED) */
+.social-widget-title {
+    font-size: 16px;
+    color: #333333;
+    font-family: Georgia, "Times New Roman", serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+/* --- 왼쪽: LATEST TWEETS 영역 --- */
+.tweet-content-wrapper {
+    display: flex;
+    align-items: flex-start; /* 위쪽 기준 정렬 */
+    gap: 20px;
+}
+
+/* 큰 주황색 트위터 로고 */
+.tweet-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #f07c29;
+    border-radius: 50%; /* 완벽한 동그라미 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* 글씨가 길어져도 아이콘이 찌그러지지 않게 */
+}
+.tweet-icon i {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+/* 트윗 텍스트 */
+.tweet-text p {
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.8;
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+}
+.tweet-author {
+    color: #f07c29 !important; /* 주황색 닉네임 */
+    font-style: italic; /* 기울임꼴 */
+    display: inline-block;
+    margin-top: 5px;
+}
+.tweet-author:hover {
+    text-decoration: underline;
+}
+
+/* --- 오른쪽: STAY CONNECTED 영역 --- */
+.social-links {
+    display: flex;
+    gap: 15px; /* 동그란 버튼 사이 간격 */
+    flex-wrap: wrap;
+}
+
+/* 하얀색 동그란 SNS 버튼 */
+.social-links a {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    color: #333333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* 마우스 올렸을 때 주황색으로! */
+.social-links a:hover {
+    background-color: #f07c29;
+    color: #ffffff;
+}
+
+/* 반응형 (모바일에서 세로로 쌓이게) */
+@media (max-width: 767px) {
+    .social-row {
+        flex-direction: column;
+        gap: 50px;
+    }
+}
 
 /* ==========================================
    3. FOOTER (풋터 영역)
