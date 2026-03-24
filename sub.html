@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 상세 - Koparion</title>
+    <link rel="shortcut icon" href="./img/favicon_32x32.webp" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css"> 
+    <link rel="stylesheet" href="./css/sub.css">  
+</head>
+<body>
+    <header id="section-header">
+        <div class="header-top-area">
+            <div class="container top-container">
+                <div class="left-menu">
+                    <ul class="currency-menu">
+                        <li>
+                            <a href="#" class="current-currency">USD ▾</a>
+                            <ul class="currency-dropdown">
+                                <li><a href="#" data-currency="USD">USD - US Dollar</a></li>
+                                <li><a href="#" data-currency="EUR">EUR - Euro</a></li>
+                                <li><a href="#" data-currency="GBP">GBP - British Pound</a></li>
+                                <li><a href="#" data-currency="JPY">JPY - Japan Yen</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right-menu">
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Sign in</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header-mid-area">
+            <div class="container mid-container">
+                <div class="search-box">
+                    <form action="#">
+                        <input type="text" placeholder="Search our store">
+                        <button type="submit">🔍</button>
+                    </form>
+                </div>
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="./img/logo_300x.png" alt="Koparion Logo">
+                    </a>
+                </div>
+                <div class="cart-box">
+                    <a href="#">
+                        <span class="cart-wrap">
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                            <span class="cart-quantity">0</span>
+                        </span>
+                        <span class="cart-text">MY CART</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main-menu-area">
+            <nav>
+                <div class="container">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home ▾</a></li>
+                        <li><a href="#">Shop ▾</a></li>
+                        <li><a href="#">Product ▾</a></li>
+                        <li><a href="#">Blog ▾</a></li>
+                        <li><a href="#">Pages ▾</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="breadcrumb-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><span id="breadcrumb-title">Demo product title</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-main-area">
+            <div class="container">
+                <div class="row ridi-detail-wrapper">
+                    
+                    <div class="col-md-6 col-lg-5 ridi-cover-box">
+                        <div class="product-img-box">
+                            <div class="main-image">
+                                <img src="./img/broken.png" alt="책 표지" id="detail-main-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-7 ridi-info-box">
+                        <div class="product-info-main">
+                            <h1 class="page-title" id="detail-title">Demo product title</h1>
+                            
+                            <div class="product-price-box">
+                                <span class="money" id="detail-price">$50.00</span>
+                            </div>
+
+                            <div class="product-description" id="detail-short-desc">
+                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment...</p>
+                            </div>
+
+                            <div class="product-add-form">
+                                <div class="quantity-box">
+                                    <div class="dec qtybutton">-</div>
+                                    <input type="text" value="1" name="quantity" class="qty-input">
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                                <button type="button" class="btn-add-to-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                                </button>
+                            </div>
+
+                            <div class="product-actions">
+                                <a href="#"><i class="fa-regular fa-heart"></i> Add to wishlist</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-info-tabs">
+            <div class="container">
+                <ul class="nav-tabs">
+                    <li><a href="#" class="active tab-btn" data-target="desc">DESCRIPTION</a></li>
+                    <li><a href="#" class="tab-btn" data-target="author">AUTHOR INFO</a></li>
+                    <li><a href="#" class="tab-btn" data-target="publisher">PUBLISHING INFO</a></li>
+                </ul>
+                
+                <div class="tab-content" id="detail-tab-content">
+                    <p>여기에 상세 내용이 들어갑니다.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="section-footer">
+        <div class="footer-top">
+            <div class="container">
+                <ul class="footer-menu">
+                    <li><a href="#">Enable Cookies</a></li>
+                    <li><a href="#">Privacy And Cookie Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-mid">
+            <div class="container footer-mid-container">
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Prices drop</a></li>
+                        <li><a href="#">New products</a></li>
+                        <li><a href="#">Best sales</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our company</h3>
+                    <ul>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Legal Notice</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Your account</h3>
+                    <ul>
+                        <li><a href="#">Personal info</a></li>
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="#">Credit slips</a></li>
+                        <li><a href="#">Addresses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Store Information</h3>
+                    <p>My Company, 42 avenue des Champs Elysées 75000 Paris France</p>
+                    <p>Call us now: 0123-456-789</p>
+                    <p>Email: support@bookstore.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>Copyright © 2026 <b>Koparion</b>. All Rights Reserved.</p>
+                <div class="payment-icons">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+    <script src="./js/sub.js"></script>
+</body>
+</html>

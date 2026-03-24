@@ -53,12 +53,12 @@ $(document).ready(function() {
                     <div class="swiper-slide">
                         <div class="product-wrapper">
                             <div class="product-img">
-                                <a href="#">
+                                <a href="sub.html?title=${title}">
                                     <img src="${book.thumbnail}" alt="책 표지">
                                 </a>
                             </div>
                             <div class="product-details text-center">
-                                <h4><a href="#">${title}</a></h4>
+                                <h4><a href="sub.html?title=${title}">${title}</a></h4>
                                 <div class="product-price">
                                     <ul>
                                         <li><span class="money">₩${price.toLocaleString()}</span></li>
@@ -129,12 +129,12 @@ $(document).ready(function() {
         return `
             <div class="product-wrapper mb-20">
                 <div class="product-img">
-                    <a href="#">
+                    <a href="sub.html?title=${title}">
                         <img src="${book.thumbnail}" alt="책 표지">
                     </a>
                 </div>
                 <div class="product-details text-center">
-                    <h4><a href="#">${title}</a></h4>
+                    <h4><a href="sub.html?title=${title}">${title}</a></h4>
                     <div class="product-price">
                         <ul>
                             <li><span class="money">₩${price.toLocaleString()}</span></li>
@@ -204,12 +204,12 @@ $(document).ready(function() {
         return `
             <div class="product-wrapper mb-20">
                 <div class="product-img">
-                    <a href="#">
+                    <a href="sub.html?title=${title}">
                         <img src="${book.thumbnail}" alt="책 표지" style="height: 350px; object-fit: cover;">
                     </a>
                 </div>
                 <div class="product-details text-center">
-                    <h4><a href="#">${title}</a></h4>
+                    <h4><a href="sub.html?title=${title}">${title}</a></h4>
                     <div class="product-price">
                         <ul>
                             <li><span class="money">₩${price.toLocaleString()}</span></li>
@@ -292,10 +292,10 @@ $(document).ready(function() {
                         slideHtml += `
                             <div class="single-small-product">
                                 <div class="small-product-img">
-                                    <a href="#"><img src="${book.thumbnail}" alt="책 표지"></a>
+                                    <a href="sub.html?title=${title}"><img src="${book.thumbnail}" alt="책 표지"></a>
                                 </div>
                                 <div class="small-product-content">
-                                    <h4><a href="#">${title}</a></h4>
+                                    <h4><a href="sub.html?title=${title}">${title}</a></h4>
                                     <div class="price-box">
                                         <span class="money new-price">₩${price.toLocaleString()}</span>
                                     </div>
