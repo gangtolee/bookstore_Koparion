@@ -177,8 +177,9 @@ $(document).ready(function() {
                 spaceBetween: 20, 
                 loop: true, 
                 navigation: {
-                    nextEl: ".bestsellerSwiper .swiper-button-next",
-                    prevEl: ".bestsellerSwiper .swiper-button-prev",
+                    // 🌟 방금 만든 커스텀 버튼 이름으로 연결!
+                    nextEl: ".bestseller-nav .custom-next",
+                    prevEl: ".bestseller-nav .custom-prev",
                 },
                 breakpoints: {
                     0: { slidesPerView: 1 },
