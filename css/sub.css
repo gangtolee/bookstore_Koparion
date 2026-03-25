@@ -56,8 +56,14 @@
 }
 .product-img-box .main-image img {
     width: 100%;
+    max-width: 350px; 
+    max-height: 500px; 
+    height: auto;
+    object-fit: contain; 
+    display: block;
+    margin: 0 auto 20px auto; 
     border: 1px solid #e5e5e5;
-    margin-bottom: 20px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05); 
 }
 
 .ridi-info-box {
@@ -277,4 +283,61 @@
 }
 .btn-desc-more:hover {
     background-color: #f8f8f8; /* 마우스 올렸을 때 살짝 어두워짐 */
+}
+
+/* ==========================================
+   [Sub Page] 5. 커스텀 탭 콘텐츠 디자인
+========================================== */
+/* DETAILS 탭의 테이블 디자인 */
+.detail-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    text-align: left; 
+}
+.detail-table th, .detail-table td { 
+    padding: 15px; 
+    border-bottom: 1px solid #e5e5e5; 
+}
+.detail-table th { 
+    width: 20%; 
+    background-color: #f9f9f9; 
+    color: #333333; 
+    font-weight: bold; 
+}
+.detail-table td { 
+    color: #666666; 
+}
+
+/* AUTHOR, REVIEWS 탭의 안내 박스 디자인 */
+.tab-custom-box { 
+    text-align: center; 
+    padding: 40px 20px; 
+}
+.tab-custom-box i { 
+    font-size: 40px; 
+    color: #e5e5e5; 
+    margin-bottom: 20px; 
+    display: block; 
+}
+.tab-custom-box h4 { 
+    font-size: 18px; 
+    color: #333333; 
+    margin-bottom: 10px; 
+}
+.tab-custom-box p { 
+    color: #666666; 
+    margin-bottom: 25px; 
+}
+.btn-tab-link { 
+    display: inline-block; 
+    padding: 12px 30px; 
+    background-color: #f07c29; 
+    color: #ffffff; 
+    border-radius: 3px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: 0.3s; 
+}
+.btn-tab-link:hover { 
+    background-color: #333333; 
 }

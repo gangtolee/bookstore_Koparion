@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상품 상세 - Koparion</title>
+    <title>장바구니 - Koparion</title>
     <link rel="shortcut icon" href="./img/favicon_32x32.webp" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/main.css"> 
-    <link rel="stylesheet" href="./css/sub.css">  
-</head>
+    <link rel="stylesheet" href="./css/main.css"> <link rel="stylesheet" href="./css/cart.css"> </head>
 <body>
     <header id="section-header">
         <div class="header-top-area">
@@ -22,7 +20,11 @@
                                 <li><a href="#" data-currency="USD">USD - US Dollar</a></li>
                                 <li><a href="#" data-currency="EUR">EUR - Euro</a></li>
                                 <li><a href="#" data-currency="GBP">GBP - British Pound</a></li>
+                                <li><a href="#" data-currency="INR">INR - Indian Rupee</a></li>
+                                <li><a href="#" data-currency="BDT">BDT - Bangladesh Taka</a></li>
                                 <li><a href="#" data-currency="JPY">JPY - Japan Yen</a></li>
+                                <li><a href="#" data-currency="CAD">CAD - Canada Dollar</a></li>
+                                <li><a href="#" data-currency="AUD">AUD - Australian Dollar</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -76,77 +78,66 @@
     </header>
 
     <main>
-        <div class="breadcrumbs-section">
+        <div class="breadcrumbs-section cart-breadcrumb">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <ul class="breadcrumb-list">
                             <li><a href="index.html">Home</a></li>
-                            <li><span id="breadcrumb-title">Demo product title</span></li>
+                            <li><span>Shopping Cart</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="product-main-area">
+        <section class="cart-area">
             <div class="container">
-                <div class="row ridi-detail-wrapper">
-                    
-                    <div class="col-md-6 col-lg-5 ridi-cover-box">
-                        <div class="product-img-box">
-                            <div class="main-image">
-                                <img src="./img/broken.png" alt="책 표지" id="detail-main-img">
-                            </div>
-                        </div>
+                <div class="cart-wrapper">
+                    <div class="empty-cart-msg" id="empty-msg" style="display:none;">
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                        <h2>장바구니가 비어 있습니다.</h2>
+                        <a href="index.html" class="btn-continue-shopping">쇼핑 계속하기</a>
                     </div>
 
-                    <div class="col-md-6 col-lg-7 ridi-info-box">
-                        <div class="product-info-main">
-                            <h1 class="page-title" id="detail-title">Demo product title</h1>
-                            
-                            <div class="product-price-box">
-                                <span class="money" id="detail-price">$50.00</span>
+                    <div class="cart-table-wrapper" id="cart-content">
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th class="th-img">Image</th>
+                                    <th class="th-name">Product Name</th>
+                                    <th class="th-price">Price</th>
+                                    <th class="th-qty">Quantity</th>
+                                    <th class="th-total">Total</th>
+                                    <th class="th-remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-tbody">
+                                </tbody>
+                        </table>
+                        
+                        <div class="cart-bottom-area">
+                            <div class="cart-buttons">
+                                <a href="index.html" class="btn-continue">CONTINUE SHOPPING</a>
+                                <button type="button" class="btn-clear" id="btn-clear-cart">CLEAR CART</button>
                             </div>
-
-                            <div class="product-description" id="detail-short-desc">
-                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment...</p>
-                            </div>
-
-                            <div class="product-add-form">
-                                <div class="quantity-box">
-                                    <div class="dec qtybutton">-</div>
-                                    <input type="text" value="1" name="quantity" class="qty-input">
-                                    <div class="inc qtybutton">+</div>
+                            <div class="cart-total-box">
+                                <h2>CART TOTALS</h2>
+                                <div class="total-row">
+                                    <span>Subtotal</span>
+                                    <span class="price" id="cart-subtotal">₩0</span>
                                 </div>
-                                <button type="button" class="btn-add-to-cart">
-                                    <i class="fa-solid fa-cart-shopping"></i> Add to cart
-                                </button>
+                                <div class="total-row grand-total">
+                                    <span>Grand Total</span>
+                                    <span class="price" id="cart-grand-total">₩0</span>
+                                </div>
+                                <button type="button" class="btn-checkout" onclick="alert('결제 페이지는 준비 중입니다!')">PROCEED TO CHECKOUT</button>
                             </div>
-
-                            <div class="product-actions">
-                                <a href="#"><i class="fa-regular fa-heart"></i> Add to wishlist</a>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="product-info-tabs">
-            <div class="container">
-                <ul class="nav-tabs">
-                    <li><a href="#" class="active tab-btn" data-target="details">DETAILS</a></li>
-                    <li><a href="#" class="tab-btn" data-target="author">AUTHOR</a></li>
-                    <li><a href="#" class="tab-btn" data-target="reviews">REVIEWS</a></li>
-                </ul>
-                
-                <div class="tab-content" id="detail-tab-content">
-                    <p>여기에 상세 내용이 들어갑니다.</p>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
 
     <footer id="section-footer">
@@ -210,6 +201,6 @@
     </footer>
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
-    <script src="./js/sub.js"></script>
+    <script src="./js/cart.js"></script> 
 </body>
 </html>
