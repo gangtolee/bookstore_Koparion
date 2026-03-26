@@ -1,37 +1,45 @@
+/* 헤더 장바구니 숫자 연동 */
+$(document).ready(function() {
+    function updateHeaderCartCount() {
+        let cart = JSON.parse(localStorage.getItem('koparion_cart')) || [];
+        let totalCount = 0;
+        
+        cart.forEach(item => {
+            totalCount += item.quantity;
+        });
+
+        $('.cart-quantity').text(totalCount);
+    }
+
+    updateHeaderCartCount();
+});
+
+
 // 헤더의 USD 부분
 $(document).ready(function() {
-    // 1. 드롭다운 안의 항목(li a)을 클릭했을 때
     $('.currency-dropdown li a').on('click', function(e) {
-        e.preventDefault(); // 링크 클릭 시 위로 튕겨 올라가는 현상 방지
-        
-        // 2. 내가 클릭한 녀석의 숨겨진 데이터('USD', 'EUR' 등) 가져오기
+        e.preventDefault();
         let selectedCurrency = $(this).data('currency');
-        
-        // 3. 메인 글자를 내가 선택한 글자로 바꿔치기!
         $('.current-currency').text(selectedCurrency + ' ▾');
     });
 });
 // --- 메인 배너 슬라이더 (Swiper) ---
     const mainSwiper = new Swiper(".mainSwiper", {
-        loop: true, // 끝까지 가면 다시 처음으로 무한 반복!
+        loop: true,
         navigation: {
             nextEl: ".mainSwiper .swiper-button-next",
             prevEl: ".mainSwiper .swiper-button-prev",
         },
         autoplay: {
             delay: 5000,
-            disableOnInteraction: false, // 마우스로 건드려도 자동 재생 유지
+            disableOnInteraction: false,
         },
     });
-
-    // --- [Main] Top Interesting (카카오 API + 탭 기능) ---
     
 // --- [Main] Top Interesting (카카오 API + 탭 기능) ---
-    
-    // 1. 스와이퍼 변수를 먼저 비워둔 채로 준비
+
     let productSwiper = null;
 
-    // 2. 책 데이터를 불러와서 꽂아넣는 함수
     function getBooks(searchQuery) {
         $.ajax({
             method: "GET",
@@ -79,25 +87,23 @@ $(document).ready(function() {
             productSwiper = new Swiper(".productSwiper", {
                 slidesPerView: 4, 
                 spaceBetween: 20, 
-                loop: true, //
+                loop: true,
                 navigation: {
                     nextEl: ".productSwiper .swiper-button-next",
                     prevEl: ".productSwiper .swiper-button-prev",
                 },
                 breakpoints: {
-                    0: { slidesPerView: 1 },    // 모바일
-                    768: { slidesPerView: 2 },  // 태블릿
-                    992: { slidesPerView: 3 },  // 작은 PC
-                    1200: { slidesPerView: 4 }  // 큰 PC
+                    0: { slidesPerView: 1 },
+                    768: { slidesPerView: 2 },
+                    992: { slidesPerView: 3 },
+                    1200: { slidesPerView: 4 }
                 }
             });
         });
     }
 
-    // 3. 처음에 '신간' 불러오기
     getBooks("신간");
 
-    // 4. 탭 메뉴 클릭 이벤트
     $('.tab-menu .nav li a').on('click', function(e) {
         e.preventDefault(); 
         
@@ -115,12 +121,8 @@ $(document).ready(function() {
         }
     });
 
-    // Main 베스트셀러 영역 (해리포터 API)
-    
-    // 스와이퍼를 담을 변수 미리 준비
     let bestsellerSwiper = null; 
 
-    // 1. 책 카드 HTML을 만들어주는 보조 함수
     function createBestsellerCard(book) {
         let title = book.title;
         let price = book.sale_price > 0 ? book.sale_price : book.price;
@@ -146,7 +148,6 @@ $(document).ready(function() {
         `;
     }
 
-    // 2. 해리포터 책 데이터를 불러오는 함수
     function getBestsellerBooks(searchQuery) {
         $.ajax({
             method: "GET",
@@ -157,7 +158,6 @@ $(document).ready(function() {
             let books = msg.documents.filter(val => val.thumbnail !== '');
             $('#bestseller-book-list').empty();
 
-            // 책을 2개씩 묶어서 하나의 슬라이드로 만들기
             for (let i = 0; i < books.length; i += 2) {
                 let slideHtml = `<div class="swiper-slide">`;
                 slideHtml += createBestsellerCard(books[i]);
@@ -177,7 +177,6 @@ $(document).ready(function() {
                 spaceBetween: 20, 
                 loop: true, 
                 navigation: {
-                    // 🌟 방금 만든 커스텀 버튼 이름으로 연결!
                     nextEl: ".bestseller-nav .custom-next",
                     prevEl: ".bestseller-nav .custom-prev",
                 },
@@ -189,10 +188,7 @@ $(document).ready(function() {
         });
     }
 
-    // 3. 페이지가 열리면 바로 해리포터 검색 실행
     getBestsellerBooks("해리포터");
-
-    // [Main] Featured Books 영역 (소설 API)
     
     let featuredSwiper = null;
 
@@ -225,7 +221,7 @@ $(document).ready(function() {
         $.ajax({
             method: "GET",
             url: "https://dapi.kakao.com/v3/search/book?target=title",
-            data: { query: searchQuery, size: 16 }, // 🌟 2행 4열 무한 롤링을 위해 16권으로 넉넉하게 호출!
+            data: { query: searchQuery, size: 16 },
             headers: { Authorization: "KakaoAK c9f224b560497c9acc2114158360d425" } 
         }).done(function (msg) {
             let books = msg.documents.filter(val => val.thumbnail !== '');

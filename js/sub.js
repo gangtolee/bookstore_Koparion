@@ -46,8 +46,7 @@ $(document).ready(function() {
         $('#detail-price').text('₩' + price.toLocaleString());
 
         let fullDesc = book.contents || "상세 설명이 제공되지 않습니다.";
-        
-        // 🌟 수정된 부분 1: 링크 박스에 ID를 달고, 초기 상태를 숨김(display:none)으로 설정 🌟
+    
         let outLinkHtml = book.url ? `
             <div id="ka-link-wrapper" style="margin-top:15px; display:none;">
                 <a href="${book.url}" target="_blank" style="color:#f07c29; font-weight:bold; text-decoration:none;">
@@ -66,31 +65,34 @@ $(document).ready(function() {
                 </div>
             `);
         } else {
-            // 글이 짧아서 더보기 버튼이 없을 땐 그냥 다 보여줍니다.
             $('#detail-short-desc').html(`<p>${fullDesc}</p>`); 
         }
 
-        // 하단 탭 초기 렌더링 (DETAILS 테이블 띄우기)
         renderDetailsTab(book);
+
+        let wishlist = JSON.parse(localStorage.getItem('koparion_wishlist')) || [];
+        let isWished = wishlist.some(item => item.isbn === book.isbn);
+        
+        let $wishIcon = $('.product-actions a i');
+        
+        if (isWished) {
+            $wishIcon.removeClass('fa-regular').addClass('fa-solid').css('color', '#DC3232');
+        } else {
+            $wishIcon.removeClass('fa-solid').addClass('fa-regular').css('color', '');
+        }
     } 
 
-    // 🌟 수정된 부분 2: 클릭 시 링크 박스 토글 기능 추가 🌟
     $(document).on('click', '#btn-top-more', function() {
         let $descText = $(this).siblings('.desc-text');
-        // 클릭된 버튼과 같은 구역에 있는 링크 박스를 찾습니다.
         let $linkWrapper = $(this).siblings('#ka-link-wrapper');
 
         $descText.toggleClass('collapsed');
         
         if ($descText.hasClass('collapsed')) {
-            // ❌ 이제 접힌 상태입니다 (Show More)
-            $(this).html('더보기 <i class="fa-solid fa-angle-down"></i>'); 
-            // 🌟 링크 박스도 숨깁니다. 🌟
+            $(this).html('더보기 <i class="fa-solid fa-angle-down"></i>');
             $linkWrapper.hide(); 
         } else {
-            // ✅ 이제 펼쳐진 상태입니다 (Show Less)
-            $(this).html('접기 <i class="fa-solid fa-angle-up"></i>'); 
-            // 🌟 링크 박스를 서서히 나타나게 합니다. 🌟
+            $(this).html('접기 <i class="fa-solid fa-angle-up"></i>');
             $linkWrapper.fadeIn(300); 
         }
     });
@@ -149,20 +151,16 @@ $(document).ready(function() {
         `);
     }
 
-    // =========================================================
-    // 🌟 아래부터 새로 추가할 기능들입니다! 🌟
-    // =========================================================
-
     // 6. 수량 조절 (+ / -) 기능
     $('.qtybutton').on('click', function() {
         let $input = $('.qty-input');
-        let currentVal = parseInt($input.val()) || 1; // 문자를 숫자로 변환
+        let currentVal = parseInt($input.val()) || 1;
 
         if ($(this).hasClass('inc')) {
-            $input.val(currentVal + 1); // + 클릭 시
+            $input.val(currentVal + 1);
         } else if ($(this).hasClass('dec')) {
             if (currentVal > 1) {
-                $input.val(currentVal - 1); // - 클릭 시 (1 밑으론 안 내려감)
+                $input.val(currentVal - 1);
             }
         }
     });
@@ -174,7 +172,6 @@ $(document).ready(function() {
         let qty = parseInt($('.qty-input').val()) || 1;
         let price = currentBookData.sale_price > 0 ? currentBookData.sale_price : currentBookData.price;
         
-        // 장바구니에 담을 아이템 정보(객체) 만들기
         let cartItem = {
             isbn: currentBookData.isbn,
             title: currentBookData.title,
@@ -183,68 +180,62 @@ $(document).ready(function() {
             quantity: qty
         };
 
-        // 브라우저 저장소에서 기존 장바구니 꺼내오기 (없으면 빈 배열 [])
         let cart = JSON.parse(localStorage.getItem('koparion_cart')) || [];
 
-        // 이미 장바구니에 있는 책인지 확인 (ISBN 바코드 번호로 비교)
         let existingItemIndex = cart.findIndex(item => item.isbn === cartItem.isbn);
 
         if (existingItemIndex !== -1) {
-            // 이미 담긴 책이면 수량만 증가!
             cart[existingItemIndex].quantity += qty;
         } else {
-            // 처음 담는 책이면 장바구니 목록에 추가!
             cart.push(cartItem);
         }
 
-        // 업데이트된 장바구니를 다시 브라우저 저장소에 문자열로 예쁘게 저장
         localStorage.setItem('koparion_cart', JSON.stringify(cart));
 
-        // 우측 상단 장바구니 빨간 동그라미 숫자 업데이트
         updateCartCount();
 
-        alert(`[${cartItem.title}]이(가) 장바구니에 ${qty}권 담겼습니다! 🛒`);
+        $('#cart-modal').fadeIn(200); 
     });
 
-    // 8. 위시리스트(Wishlist) 담기 기능
+    $(document).on('click', '#btn-close-modal', function() {
+        $('#cart-modal').fadeOut(200);
+    });
+
     $('.product-actions a').on('click', function(e) {
-        e.preventDefault(); // 화면 맨 위로 튕기는 현상 방지
+        e.preventDefault();
         if (!currentBookData) return;
 
-        // 위시리스트 꺼내오기
         let wishlist = JSON.parse(localStorage.getItem('koparion_wishlist')) || [];
         
-        // 이미 찜한 책인지 확인
-        let existingItem = wishlist.find(item => item.isbn === currentBookData.isbn);
+        let existingIndex = wishlist.findIndex(item => item.isbn === currentBookData.isbn);
+        
+        let $icon = $(this).find('i');
 
-        if (existingItem) {
-            alert("이미 찜하신 상품입니다! ❤️");
+        if (existingIndex !== -1) {
+            wishlist.splice(existingIndex, 1);
+            $icon.removeClass('fa-solid').addClass('fa-regular').css('color', '');
         } else {
-            // 없으면 추가
             wishlist.push({
                 isbn: currentBookData.isbn,
                 title: currentBookData.title,
                 thumbnail: currentBookData.thumbnail
             });
-            localStorage.setItem('koparion_wishlist', JSON.stringify(wishlist));
-            alert("위시리스트에 쏙 담겼습니다! ❤️");
+            $icon.removeClass('fa-regular').addClass('fa-solid').css('color', '#DC3232');
         }
+        
+        localStorage.setItem('koparion_wishlist', JSON.stringify(wishlist));
     });
 
-    // 9. 헤더의 장바구니 숫자 업데이트 함수
     function updateCartCount() {
         let cart = JSON.parse(localStorage.getItem('koparion_cart')) || [];
         let totalCount = 0;
         
-        // 장바구니에 있는 모든 책의 수량을 더함
         cart.forEach(item => {
             totalCount += item.quantity;
         });
 
-        // 헤더 장바구니 아이콘 옆 숫자(0) 변경
         $('.cart-quantity').text(totalCount);
     }
 
-    // 페이지가 처음 열렸을 때 기존 장바구니 숫자를 불러와서 세팅
     updateCartCount();
 });

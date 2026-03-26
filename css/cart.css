@@ -1,8 +1,6 @@
 @charset "utf-8";
 
-/* ==========================================
-   [Cart Page] 장바구니 전용 스타일
-========================================== */
+/* 장바구니 전용 스타일 */
 
 .cart-breadcrumb {
     background-image: none;
@@ -60,7 +58,6 @@
     border-top: 1px solid #e5e5e5;
 }
 
-/* 🌟 테이블 각 열(Column) 너비 밸런스 조정 🌟 */
 .cart-table th.th-img { width: 15%; }
 .cart-table th.th-name { width: 40%; text-align: left; padding-left: 20px;}
 .cart-table th.th-price { width: 15%; }
@@ -74,18 +71,16 @@
     vertical-align: middle;
 }
 
-/* 🌟 책 표지 이미지 잘림 방지 및 교보문고 스타일 적용 🌟 */
 .cart-table .product-img img {
-    width: 100px; /* 고정 너비 설정 */
-    height: auto; /* 비율 유지 */
-    object-fit: contain; /* 이미지가 찌그러지지 않게 박스 안에 맞춤 */
+    width: 100px;
+    height: auto;
+    object-fit: contain;
     display: block;
     margin: 0 auto;
     border: 1px solid #eeeeee;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.05); /* 은은한 그림자 */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
 }
 
-/* 상품명 교보문고처럼 왼쪽 정렬 */
 .cart-table td.product-name {
     text-align: left;
     padding-left: 20px;
@@ -104,7 +99,6 @@
     font-size: 16px;
 }
 
-/* 수량 조절 버튼 (테이블 안쪽) */
 .cart-table .qty-box {
     display: inline-flex;
     border: 1px solid #e5e5e5;
@@ -129,7 +123,6 @@
     outline: none;
 }
 
-/* 삭제 버튼 */
 .btn-remove {
     background: none;
     border: none;
@@ -206,3 +199,60 @@
     margin-top: 20px;
 }
 .btn-checkout:hover { background-color: #f07c29; }
+
+/* 삭제 확인 모달(팝업) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+.modal-content {
+    background-color: #ffffff;
+    padding: 35px 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.modal-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.btn-modal-cancel {
+    flex: 1;
+    padding: 12px 0;
+    background-color: #787878;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.btn-modal-cancel:hover { background-color: #555555; }
+
+.btn-modal-confirm {
+    flex: 1;
+    padding: 12px 0;
+    background-color: #f07c29; 
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.btn-modal-confirm:hover { background-color: #d96a1a; }

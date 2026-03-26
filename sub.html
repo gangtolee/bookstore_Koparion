@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/main.css"> 
     <link rel="stylesheet" href="./css/sub.css">  
+    <link rel="stylesheet" href="./css/common.css">
 </head>
 <body>
     <header id="section-header">
@@ -18,11 +19,16 @@
                     <ul class="currency-menu">
                         <li>
                             <a href="#" class="current-currency">USD ▾</a>
+                            
                             <ul class="currency-dropdown">
                                 <li><a href="#" data-currency="USD">USD - US Dollar</a></li>
                                 <li><a href="#" data-currency="EUR">EUR - Euro</a></li>
                                 <li><a href="#" data-currency="GBP">GBP - British Pound</a></li>
+                                <li><a href="#" data-currency="INR">INR - Indian Rupee</a></li>
+                                <li><a href="#" data-currency="BDT">BDT - Bangladesh Taka</a></li>
                                 <li><a href="#" data-currency="JPY">JPY - Japan Yen</a></li>
+                                <li><a href="#" data-currency="CAD">CAD - Canada Dollar</a></li>
+                                <li><a href="#" data-currency="AUD">AUD - Australian Dollar</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -38,17 +44,20 @@
         </div>
         <div class="header-mid-area">
             <div class="container mid-container">
+
                 <div class="search-box">
                     <form action="#">
                         <input type="text" placeholder="Search our store">
                         <button type="submit">🔍</button>
                     </form>
                 </div>
+
                 <div class="logo">
                     <a href="index.html">
                         <img src="./img/logo_300x.png" alt="Koparion Logo">
                     </a>
                 </div>
+
                 <div class="cart-box">
                     <a href="cart.html">
                         <span class="cart-wrap">
@@ -60,15 +69,104 @@
                 </div>
             </div>
         </div>
+
+        </div>
+        </div>
         <div class="main-menu-area">
             <nav>
                 <div class="container">
                     <ul class="nav-list">
-                        <li><a href="index.html">Home ▾</a></li>
-                        <li><a href="#">Shop ▾</a></li>
-                        <li><a href="#">Product ▾</a></li>
-                        <li><a href="#">Blog ▾</a></li>
-                        <li><a href="#">Pages ▾</a></li>
+                        <li>
+                            <a href="#">Home ▾</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Home Version 1</a></li>
+                                <li><a href="#">Home Version 2</a></li>
+                                <li><a href="#">Home Version 3</a></li>
+                                <li><a href="#">Home Version 4</a></li>
+                                <li><a href="#">Home Version 5</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Shop ▾</a>
+                            <div class="mega-menu">
+
+                                <div class="mega-column">
+                                    <h4>JACKETS</h4>
+                                    <ul>
+                                        <li><a href="#">Tops & Tees</a></li>
+                                        <li><a href="#">Polo Short Sleeve</a></li>
+                                        <li><a href="#">Graphic T-Shirts</a></li>
+                                        <li><a href="#">Jackets & Coats</a></li>
+                                        <li><a href="#">Fashion Jackets</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="mega-column">
+                                    <h4>WEATERS</h4>
+                                    <ul>
+                                        <li><a href="#">Crochet</a></li>
+                                        <li><a href="#">Sleeveless</a></li>
+                                        <li><a href="#">Stripes</a></li>
+                                        <li><a href="#">Sweaters</a></li>
+                                        <li><a href="#">Hoodies</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="mega-column">
+                                    <h4>BOTTOMS</h4>
+                                    <ul>
+                                        <li><a href="#">Heeled Sandals</a></li>
+                                        <li><a href="#">Polo Short Sleeve</a></li>
+                                        <li><a href="#">Flat Sandals</a></li>
+                                        <li><a href="#">Short Sleeve</a></li>
+                                        <li><a href="#">Long Sleeve</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="mega-column">
+                                    <h4>JEANS PANTS</h4>
+                                    <ul>
+                                        <li><a href="#">Polo Short Sleeve</a></li>
+                                        <li><a href="#">Sleeveless</a></li>
+                                        <li><a href="#">Graphic T-Shirts</a></li>
+                                        <li><a href="#">Hoodies</a></li>
+                                        <li><a href="#">Jackets</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Product ▾</a>
+
+                            <ul class="sub-menu">
+                                <li><a href="#">Single Product</a></li>
+                                <li><a href="#">Variable Product</a></li>
+                                <li><a href="#">Affiliate Product</a></li>
+                                <li><a href="#">Soldout Product</a></li>
+                                <li><a href="#">Countdown Product</a></li>
+                                <li><a href="#">Product Preorder</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Blog ▾</a>
+                        
+                            <ul class="sub-menu">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Blog-Details</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Pages ▾</a>
+                        
+                            <ul class="sub-menu">
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">404 Page</a></li>
+                                <li><a href="#">Brand Page</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -148,6 +246,18 @@
             </div>
         </div>
     </main>
+   
+    <!-- 장바구니 담기 창 -->
+    <div id="cart-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <p class="modal-title">선택한 상품을 장바구니에 담았어요.</p>
+            <p class="modal-desc">장바구니로 이동하시겠어요?</p>
+            <div class="modal-buttons">
+                <button type="button" class="btn-modal-cancel" id="btn-close-modal">취소</button>
+                <a href="cart.html" class="btn-modal-cart">장바구니 보기</a>
+            </div>
+        </div>
+    </div>
 
     <footer id="section-footer">
         <div class="footer-top">

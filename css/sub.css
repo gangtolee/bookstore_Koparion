@@ -1,8 +1,6 @@
 @charset "utf-8";
 
-/* ==========================================
-   [Sub Page] 1. Breadcrumbs (상단 경로) 영역
-========================================== */
+/* 1. Breadcrumbs (상단 경로) 영역 */
 .breadcrumbs-section {
     background-color: #f6f6f6; 
     background-image: url('../img/11.webp'); 
@@ -37,9 +35,7 @@
     margin-left: 10px;
 }
 
-/* ==========================================
-   [Sub Page] 2. Product Details (상품 상세) 영역
-========================================== */
+/* 2. Product Details (상품 상세) 영역 */
 .product-main-area {
     padding: 80px 0;
     background-color: #ffffff;
@@ -179,9 +175,7 @@
 }
 .product-meta a:hover { color: #f07c29; }
 
-/* ==========================================
-   [Sub Page] 3. Product Info Tabs (하단 탭)
-========================================== */
+/* 3. Product Info Tabs (하단 탭) */
 .product-info-tabs {
     padding-bottom: 80px;
 }
@@ -230,21 +224,18 @@
     .ridi-cover-box, .ridi-info-box { width: 100%; }
 }
 
-/* ==========================================
-   [Sub Page] 4. 상단 책 설명 '더보기' 기능
-========================================== */
+/* 4. 상단 책 설명 '더보기' 기능 */
 .desc-wrapper {
-    margin-bottom: 10px; /* 버튼과 아래 선 사이의 간격 */
+    margin-bottom: 10px; 
 }
 
 .desc-text {
-    position: relative; /* 🌟 핵심 해결책: 하얀 그라데이션을 텍스트 영역 안에 가둡니다! */
+    position: relative;
     line-height: 1.8;
     color: #666666;
     overflow: hidden;
 }
 
-/* 🌟 접혀있을 때 높이 제한 (약 3줄) & 그라데이션 */
 .desc-text.collapsed {
     max-height: 80px; 
 }
@@ -256,22 +247,22 @@
     width: 100%; 
     height: 45px;
     background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
-    pointer-events: none; /* 🌟 핵심 해결책 2: 그라데이션이 버튼 클릭을 방해하지 못하게 투명화! */
+    pointer-events: none;
 }
 
-/* 🌟 상단 전용 더보기/접기 버튼 (리디북스 스타일) */
+/* 상단 전용 더보기/접기 버튼 */
 .btn-desc-more {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* 버튼이 가로로 꽉 차게 */
+    width: 100%;
     background-color: #ffffff;
-    border: 1px solid #e6e6e6; /* 연한 회색 테두리 */
-    border-radius: 4px; /* 살짝 둥근 모서리 */
-    color: #333333; /* 짙은 회색 글씨 */
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    color: #333333;
     font-size: 14px;
     font-weight: bold;
-    padding: 12px 0; /* 위아래 넉넉한 여백 */
+    padding: 12px 0;
     cursor: pointer;
     margin-top: 10px;
     position: relative;
@@ -282,12 +273,10 @@
     margin-left: 5px;
 }
 .btn-desc-more:hover {
-    background-color: #f8f8f8; /* 마우스 올렸을 때 살짝 어두워짐 */
+    background-color: #f8f8f8;
 }
 
-/* ==========================================
-   [Sub Page] 5. 커스텀 탭 콘텐츠 디자인
-========================================== */
+/* 5. 커스텀 탭 콘텐츠 디자인 */
 /* DETAILS 탭의 테이블 디자인 */
 .detail-table { 
     width: 100%; 
@@ -340,4 +329,74 @@
 }
 .btn-tab-link:hover { 
     background-color: #333333; 
+}
+
+/* 장바구니 모달(팝업) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+.modal-content {
+    background-color: #ffffff;
+    padding: 35px 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.modal-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
+}
+.modal-desc {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 25px;
+}
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.btn-modal-cancel {
+    flex: 1;
+    padding: 12px 0;
+    background-color: #787878;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.btn-modal-cancel:hover { background-color: #555555; }
+
+/* 장바구니 보기 버튼 */
+.btn-modal-cart {
+    flex: 1;
+    padding: 12px 0;
+    background-color: #f07c29;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.btn-modal-cart:hover { 
+    background-color: #d96a1a; 
+    color: #ffffff; 
 }
