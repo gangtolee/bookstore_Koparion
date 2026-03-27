@@ -1,3 +1,32 @@
+// 글로벌 환율 변환 시스템
+window.formatPrice = function(krwPrice) {
+    // 1. 고정 환율 설정 (포트폴리오용 대략적인 환율)
+    const exchangeRates = { KRW: 1, USD: 1350, EUR: 1450, JPY: 9 };
+    const currencySymbols = { KRW: '₩', USD: '$', EUR: '€', JPY: '¥' };
+    
+    const userCurrency = localStorage.getItem('koparion_currency') || 'KRW';
+    
+    let converted = krwPrice / exchangeRates[userCurrency];
+    
+    if (userCurrency === 'KRW' || userCurrency === 'JPY') {
+        return currencySymbols[userCurrency] + Math.round(converted).toLocaleString();
+    } else {
+        return currencySymbols[userCurrency] + converted.toFixed(2);
+    }
+};
+
+$(document).ready(function() {
+    const userCurrency = localStorage.getItem('koparion_currency') || 'KRW';
+    $('.current-currency').text(userCurrency + ' ▾');
+
+    $(document).on('click', '.currency-dropdown a', function(e) {
+        e.preventDefault();
+        let selected = $(this).data('currency');
+        localStorage.setItem('koparion_currency', selected);
+        window.location.reload();
+    });
+});
+
 $(document).ready(function() {
 
     function updateHeaderCartCount() {
@@ -39,7 +68,7 @@ $(document).ready(function() {
                     <td class="product-name">
                         <a href="sub.html?title=${item.title}">${item.title}</a>
                     </td>
-                    <td class="product-price">₩${item.price.toLocaleString()}</td>
+                    <td class="product-price">${formatPrice(item.price)}</td>
                     <td class="product-qty">
                         <div class="qty-box">
                             <div class="qty-btn dec" data-index="${index}">-</div>
@@ -47,7 +76,7 @@ $(document).ready(function() {
                             <div class="qty-btn inc" data-index="${index}">+</div>
                         </div>
                     </td>
-                    <td class="product-subtotal">₩${subtotal.toLocaleString()}</td>
+                    <td class="product-subtotal">${formatPrice(subtotal)}</td>
                     <td class="product-remove">
                         <button class="btn-remove" data-index="${index}"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
@@ -56,8 +85,8 @@ $(document).ready(function() {
             $tbody.append(trHtml);
         });
 
-        $('#cart-subtotal').text('₩' + grandTotal.toLocaleString());
-        $('#cart-grand-total').text('₩' + grandTotal.toLocaleString());
+        $('#cart-subtotal').text(formatPrice(grandTotal));
+        $('#cart-grand-total').text(formatPrice(grandTotal));
     }
 
     renderCart();

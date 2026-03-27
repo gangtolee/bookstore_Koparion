@@ -1,3 +1,32 @@
+// 글로벌 환율 변환 시스템
+window.formatPrice = function(krwPrice) {
+    // 1. 고정 환율 설정 (포트폴리오용 대략적인 환율)
+    const exchangeRates = { KRW: 1, USD: 1350, EUR: 1450, JPY: 9 };
+    const currencySymbols = { KRW: '₩', USD: '$', EUR: '€', JPY: '¥' };
+    
+    const userCurrency = localStorage.getItem('koparion_currency') || 'KRW';
+    
+    let converted = krwPrice / exchangeRates[userCurrency];
+    
+    if (userCurrency === 'KRW' || userCurrency === 'JPY') {
+        return currencySymbols[userCurrency] + Math.round(converted).toLocaleString();
+    } else {
+        return currencySymbols[userCurrency] + converted.toFixed(2);
+    }
+};
+
+$(document).ready(function() {
+    const userCurrency = localStorage.getItem('koparion_currency') || 'KRW';
+    $('.current-currency').text(userCurrency + ' ▾');
+
+    $(document).on('click', '.currency-dropdown a', function(e) {
+        e.preventDefault();
+        let selected = $(this).data('currency');
+        localStorage.setItem('koparion_currency', selected);
+        window.location.reload();
+    });
+});
+
 /* 헤더 장바구니 숫자 연동 */
 $(document).ready(function() {
     function updateHeaderCartCount() {
@@ -23,7 +52,7 @@ $(document).ready(function() {
         $('.current-currency').text(selectedCurrency + ' ▾');
     });
 });
-// --- 메인 배너 슬라이더 (Swiper) ---
+// 메인 배너 슬라이더 (Swiper)
     const mainSwiper = new Swiper(".mainSwiper", {
         loop: true,
         navigation: {
@@ -36,7 +65,7 @@ $(document).ready(function() {
         },
     });
     
-// --- [Main] Top Interesting (카카오 API + 탭 기능) ---
+// Top Interesting (카카오 API + 탭 기능)
 
     let productSwiper = null;
 
@@ -55,7 +84,7 @@ $(document).ready(function() {
             books.forEach(book => {
                 let title = book.title;
                 let price = book.sale_price > 0 ? book.sale_price : book.price; 
-                let oldPriceHtml = book.sale_price > 0 ? `<li class="old-price"><span class="money">₩${book.price.toLocaleString()}</span></li>` : '';
+                let oldPriceHtml = book.sale_price > 0 ? `<li class="old-price"><span class="money">${formatPrice(book.price)}</span></li>` : '';
                 
                 let slideHtml = `
                     <div class="swiper-slide">
@@ -69,7 +98,7 @@ $(document).ready(function() {
                                 <h4><a href="sub.html?title=${title}">${title}</a></h4>
                                 <div class="product-price">
                                     <ul>
-                                        <li><span class="money">₩${price.toLocaleString()}</span></li>
+                                        <li><span class="money">${formatPrice(price)}</span></li>
                                         ${oldPriceHtml}
                                     </ul>
                                 </div>
@@ -112,11 +141,11 @@ $(document).ready(function() {
 
         let tabName = $(this).text();
         
-        if (tabName === "NEW ARRIVAL") {
+        if (tabName === "신간도서") {
             getBooks("신간");
-        } else if (tabName === "ONSALE") {
+        } else if (tabName === "특가할인") {
             getBooks("할인");
-        } else if (tabName === "FEATURED PRODUCTS") {
+        } else if (tabName === "MD 추천도서") {
             getBooks("베스트셀러");
         }
     });
@@ -126,7 +155,7 @@ $(document).ready(function() {
     function createBestsellerCard(book) {
         let title = book.title;
         let price = book.sale_price > 0 ? book.sale_price : book.price;
-        let oldPriceHtml = book.sale_price > 0 ? `<li class="old-price"><span class="money">₩${book.price.toLocaleString()}</span></li>` : '';
+        let oldPriceHtml = book.sale_price > 0 ? `<li class="old-price"><span class="money">${formatPrice(book.price)}</span></li>` : '';
 
         return `
             <div class="product-wrapper mb-20">
@@ -139,7 +168,7 @@ $(document).ready(function() {
                     <h4><a href="sub.html?title=${title}">${title}</a></h4>
                     <div class="product-price">
                         <ul>
-                            <li><span class="money">₩${price.toLocaleString()}</span></li>
+                            <li><span class="money">${formatPrice(price)}</span></li>
                             ${oldPriceHtml}
                         </ul>
                     </div>
@@ -195,7 +224,7 @@ $(document).ready(function() {
     function createFeaturedCard(book) {
         let title = book.title;
         let price = book.sale_price > 0 ? book.sale_price : book.price;
-        let oldPriceHtml = book.sale_price > 0 ? `<li class="old-price"><span class="money">₩${book.price.toLocaleString()}</span></li>` : '';
+        let oldPriceHtml = book.sale_price > 0 ? `<li class="old-price"><span class="money">${formatPrice(book.price)}</span></li>` : '';
 
         return `
             <div class="product-wrapper mb-20">
@@ -208,7 +237,7 @@ $(document).ready(function() {
                     <h4><a href="sub.html?title=${title}">${title}</a></h4>
                     <div class="product-price">
                         <ul>
-                            <li><span class="money">₩${price.toLocaleString()}</span></li>
+                            <li><span class="money">${formatPrice(price)}</span></li>
                             ${oldPriceHtml}
                         </ul>
                     </div>
@@ -293,7 +322,7 @@ $(document).ready(function() {
                                 <div class="small-product-content">
                                     <h4><a href="sub.html?title=${title}">${title}</a></h4>
                                     <div class="price-box">
-                                        <span class="money new-price">₩${price.toLocaleString()}</span>
+                                        <span class="money new-price">${formatPrice(price)}</span>
                                     </div>
                                 </div>
                             </div>

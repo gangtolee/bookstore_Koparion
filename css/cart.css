@@ -139,18 +139,32 @@
     justify-content: space-between;
     align-items: flex-start;
 }
+
+.cart-buttons {
+    display: flex;
+    gap: 15px; 
+}
+
 .cart-buttons a, .cart-buttons button {
-    display: inline-block;
-    padding: 12px 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    padding: 0 25px;
     background-color: #f6f6f6;
     color: #333;
+    font-family: inherit;
+    font-size: 14px;
     font-weight: bold;
     text-decoration: none;
     border: 1px solid #e5e5e5;
+    border-radius: 0;
     cursor: pointer;
     transition: 0.3s;
-    margin-right: 10px;
+    box-sizing: border-box;
+    margin: 0;
 }
+
 .cart-buttons a:hover, .cart-buttons button:hover {
     background-color: #f07c29;
     color: #fff;

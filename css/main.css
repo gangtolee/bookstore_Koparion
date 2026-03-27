@@ -1,8 +1,6 @@
-/* ==========================================
-   2. MAIN (메인 본문 영역)
-========================================== */
+/* 2. 메인 본문 영역 */
 
-/* --- 2-1. 서비스 혜택 영역 --- */
+/* 서비스 혜택 영역 */
 .service-area {
     background-color: #ffffff;
     padding: 30px 0; 
@@ -24,7 +22,7 @@
     margin: 0;
 }
 
-/* 2-2. 슬라이더 영역 */
+/* 슬라이더 영역 */
 .slider-area { height: 500px; }
 .mainSwiper { 
     width: 100%; 
@@ -88,7 +86,7 @@
     color: #ffffff;
 }
 
-/* 2-3. 상품 영역 */
+/* 상품 영역 */
 .product-area {
     padding: 80px 0 50px 0; 
     background-color: #ffffff;
@@ -255,7 +253,7 @@
     text-transform: uppercase;
 }
 
-/* 2-5. 베스트셀러 영역 (Author Best Selling) */
+/* 베스트셀러 영역 (Author Best Selling) */
 
 .bestseller-area {
     padding: 80px 0;
@@ -405,7 +403,7 @@
     color: #ffffff;
 }
 
-/* 2-6. Featured Books 영역 */
+/* Featured Books 영역 */
 
 .new-book-area {
     padding-bottom: 80px; 
@@ -458,7 +456,7 @@
     color: #ffffff;
 }
 
-/* 2-7. Double Static Banner 영역 */
+/* Double Static Banner 영역 */
 
 .banner-static-area {
     padding: 80px 0 50px 0;
@@ -490,7 +488,7 @@
     opacity: 0.8;
 }
 
-/* 2-8. 3단 카테고리 & 뉴스레터 영역 */
+/* 3단 카테고리 & 뉴스레터 영역 */
 
 .most-product-area {
     padding: 80px 0;
@@ -505,6 +503,9 @@
 .most-product-column {
     flex: 1;
     min-width: 250px;
+}
+.most-product-column .newsletter-box {
+    margin-top: 80px;
 }
 
 /* 각 열의 제목 */
@@ -675,7 +676,7 @@
     color: #f07c29;
 }
 
-/* 2-9. Testimonial (고객 후기) 영역 */
+/* Testimonial (고객 후기) 영역 */
 .testimonial-area {
     background-color: #222222; 
     background-size: cover;
@@ -752,7 +753,7 @@
     opacity: 1;
 }
 
-/* 2-10. Recent Post (최근 블로그) 영역 */
+/* Recent Post (최근 블로그) 영역 */
 
 .recent-post-area {
     padding-bottom: 80px;
@@ -858,7 +859,6 @@
     border-bottom: 1px solid #e5e5e5;
 }
 
-/* 반응형 */
 @media (max-width: 991px) {
     .blog-grid-wrapper {
         flex-direction: column; 
@@ -866,7 +866,7 @@
     }
 }
 
-/* [Main] 2-11. Social Group (SNS 링크) 영역 */
+/* 2-11. Social Group (SNS 링크) 영역 */
 
 .social-group-area {
     background-color: #f8f8f8; 

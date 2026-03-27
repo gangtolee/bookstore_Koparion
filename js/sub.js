@@ -1,3 +1,32 @@
+// 글로벌 환율 변환 시스템
+window.formatPrice = function(krwPrice) {
+    // 1. 고정 환율 설정 (포트폴리오용 대략적인 환율)
+    const exchangeRates = { KRW: 1, USD: 1350, EUR: 1450, JPY: 9 };
+    const currencySymbols = { KRW: '₩', USD: '$', EUR: '€', JPY: '¥' };
+    
+    const userCurrency = localStorage.getItem('koparion_currency') || 'KRW';
+    
+    let converted = krwPrice / exchangeRates[userCurrency];
+    
+    if (userCurrency === 'KRW' || userCurrency === 'JPY') {
+        return currencySymbols[userCurrency] + Math.round(converted).toLocaleString();
+    } else {
+        return currencySymbols[userCurrency] + converted.toFixed(2);
+    }
+};
+
+$(document).ready(function() {
+    const userCurrency = localStorage.getItem('koparion_currency') || 'KRW';
+    $('.current-currency').text(userCurrency + ' ▾');
+
+    $(document).on('click', '.currency-dropdown a', function(e) {
+        e.preventDefault();
+        let selected = $(this).data('currency');
+        localStorage.setItem('koparion_currency', selected);
+        window.location.reload();
+    });
+});
+
 $(document).ready(function() {
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -43,7 +72,7 @@ $(document).ready(function() {
         }
 
         let price = book.sale_price > 0 ? book.sale_price : book.price;
-        $('#detail-price').text('₩' + price.toLocaleString());
+        $('#detail-price').text(formatPrice(price));
 
         let fullDesc = book.contents || "상세 설명이 제공되지 않습니다.";
     
@@ -145,7 +174,7 @@ $(document).ready(function() {
                 <tr><th>번역</th><td>${translators}</td></tr>
                 <tr><th>출판사</th><td>${book.publisher}</td></tr>
                 <tr><th>출간일</th><td>${pubDate}</td></tr>
-                <tr><th>정가</th><td>₩${book.price.toLocaleString()}</td></tr>
+                <tr><th>정가</th><td>${formatPrice(book.price)}</td></tr>
                 <tr><th>ISBN</th><td>${book.isbn}</td></tr>
             </table>
         `);
@@ -238,4 +267,72 @@ $(document).ready(function() {
     }
 
     updateCartCount();
+
+    // 하단 관련 도서(추천 도서) 불러오기 & Swiper 적용
+    function loadRelatedBooks() {
+        const keywords = ['비즈니스', '에세이']; 
+        
+        keywords.forEach((keyword, index) => {
+            const listId = `#related-list-${index + 1}`;
+            const swiperClass = `.related-Swiper-${index + 1}`;
+            
+            $(listId).html('<div class="swiper-slide loading-text" style="text-align:center; width:100%;">추천 도서를 불러오는 중입니다...</div>');
+
+            fetch(`https://dapi.kakao.com/v3/search/book?target=title&query=${keyword}&size=12`, {
+                method: "GET",
+                headers: { "Authorization": "KakaoAK c9f224b560497c9acc2114158360d425" }
+            })
+            .then(res => res.json())
+            .then(data => {
+                let html = '';
+                
+                if (data.documents.length === 0) {
+                    html = '<div class="swiper-slide" style="text-align:center; width:100%;">관련 도서가 없습니다.</div>';
+                } else {
+                    data.documents.forEach(book => {
+                        let price = book.sale_price > 0 ? book.sale_price : book.price;
+                        let author = book.authors[0] || "저자 미상";
+                        let thumb = book.thumbnail ? book.thumbnail.replace('R120x174.q85', 'R300x0.q100') : './img/broken.png';
+                        
+                        html += `
+                            <div class="swiper-slide related-book-card">
+                                <a href="sub.html?title=${encodeURIComponent(book.title)}">
+                                    <div class="img-wrap"><img src="${thumb}" alt="표지"></div>
+                                    <p class="r-title">${book.title}</p>
+                                    <p class="r-author">${author}</p>
+                                    <p class="r-price">${formatPrice(price)}</p>
+                                </a>
+                            </div>
+                        `;
+                    });
+                }
+                
+                $(listId).html(html);
+
+                new Swiper(swiperClass, {
+                    slidesPerView: 6, 
+                    spaceBetween: 20,
+                    loop: true,
+                    grabCursor: true,
+                    
+                    navigation: {
+                        nextEl: `.next-btn-${index + 1}`,
+                        prevEl: `.prev-btn-${index + 1}`,
+                    },
+                    
+                    breakpoints: {
+                        320: { slidesPerView: 2, spaceBetween: 10 },
+                        768: { slidesPerView: 4, spaceBetween: 15 },
+                        1200: { slidesPerView: 6, spaceBetween: 20 }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("추천 도서 로딩 오류:", error);
+                $(listId).html('<div class="swiper-slide" style="text-align:center; width:100%;">도서를 불러오는 중 오류가 발생했습니다.</div>');
+            });
+        });
+    }
+
+    loadRelatedBooks();
 });
